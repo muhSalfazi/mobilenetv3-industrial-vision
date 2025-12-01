@@ -1,0 +1,68 @@
+# ================
+# PYTHON ENV
+# ================
+venv/
+env/
+.venv/
+
+# ================
+# CACHE & TEMP
+# ================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.tmp
+
+# ================
+# DATASET (PRIVACY)
+# ================
+videos/
+frames_raw/
+frames_filtered/
+dataset/
+dataset_augmented/
+output/
+*.mp4
+*.avi
+*.mov
+*.jpg
+*.png
+*.jpeg
+*.npy
+*.npz
+
+# ================
+# MODEL FILES
+# ================
+*.h5
+*.tflite
+*.pb
+checkpoints/
+models/
+saved_model/
+
+# ================
+# JUPYTER
+# ================
+.ipynb_checkpoints/
+
+# ================
+# OS FILES
+# ================
+.DS_Store
+Thumbs.db
+
+# ================
+# VSCODE
+# ================
+.vscode/
+.settings/
+
+# ================
+# OTHER LARGE FILES
+# ================
+*.zip
+*.tar
+*.tar.gz

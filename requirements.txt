@@ -1,0 +1,11 @@
+numpy
+opencv-python
+pillow
+matplotlib
+scikit-learn
+tensorflow==2.15
+tqdm
+seaborn
+pandas
+scikit-image
+imgaug
