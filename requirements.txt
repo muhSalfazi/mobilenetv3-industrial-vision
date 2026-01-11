@@ -1,11 +1,4 @@
-numpy
 opencv-python
-pillow
-matplotlib
-scikit-learn
-tensorflow==2.15
+numpy
 tqdm
-seaborn
-pandas
-scikit-image
-imgaug
+roboflow
