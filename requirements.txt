@@ -1,4 +1,13 @@
+# Frame extraction & upload
 opencv-python
 numpy
 tqdm
 roboflow
+
+# Model testing & inference
+tensorflow
+pandas
+
+# Streamlit web app
+streamlit
+plotly

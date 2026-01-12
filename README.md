@@ -1,90 +1,74 @@
-# 🎬 Video Frame Extraction & Roboflow Upload
+# Activity Classifier AI 🏭
 
-Pipeline otomatis untuk ekstraksi frames dari 3 video CCTV dan upload ke Roboflow.
+Aplikasi Kecerdasan Buatan (AI) untuk mengidentifikasi aktivitas operator mesin pada rekaman CCTV menggunakan model Deep Learning **MobileNetV3**.
 
-## 📋 Requirements
+Dikembangkan untuk Tugas Akhir oleh **Muhamad Salman Fauzi**.
+
+---
+
+## 🚀 Cara Menjalankan Aplikasi
+
+Berikut adalah langkah-langkah singkat untuk menjalankan aplikasi ini di komputer Anda:
+
+### 1. Prasyarat
+
+Pastikan Anda sudah menginstal **Python** (versi 3.9 s/d 3.11 disarankan).
+
+### 2. Buat & Aktifkan Virtual Environment (Disarankan)
+
+Supaya library tidak bentrok dengan sistem lain, sebaiknya gunakan virtual environment.
+
+**Windows:**
 
 ```bash
-pip install opencv-python numpy tqdm roboflow
+python -m venv venv
+venv\Scripts\activate
 ```
 
-## 🚀 Quick Start
-
-Jalankan satu file ini untuk proses lengkap:
+**Linux / macOS:**
 
 ```bash
-python extract_and_upload.py
+python3 -m venv venv
+source venv/bin/activate
 ```
 
-Script akan otomatis:
+> **Tips:** Untuk keluar dari virtual environment, cukup ketik perintah `deactivate`.
 
-1. ✅ Ekstrak 5000 frames per video (total 15,000 frames)
-2. ✅ Filter frames (blur, brightness, duplicate)
-3. ✅ Upload semua ke Roboflow
+### 3. Install Dependencies
 
-## ⚙️ Konfigurasi
+Buka terminal/command prompt di folder project ini, lalu jalankan:
 
-Edit di `extract_and_upload.py`:
-
-```python
-# Video paths
-VIDEOS = [
-    "videos/rekamanCCTV-video1.mp4",
-    "videos/rekamanCCTV-video2.mp4",
-    "videos/rekamanCCTV-video3.mp4"
-]
-
-# Target frames per video
-MAX_FRAMES_PER_VIDEO = 5000
-
-# Roboflow config
-API_KEY = "your-api-key"
-WORKSPACE = "your-workspace"
-PROJECT = "your-project"
+```bash
+pip install -r requirements.txt
 ```
 
-## 📁 Struktur
+_(Pastikan file `requirements.txt` sudah ada)_
 
-```
-.
-├── videos/                      # Folder video input
-│   ├── rekamanCCTV-video1.mp4
-│   ├── rekamanCCTV-video2.mp4
-│   └── rekamanCCTV-video3.mp4
-├── frames_filtered/             # Output frames (auto-generated)
-├── extract_and_upload.py        # Main script
-└── requirements.txt             # Dependencies
+### 4. Jalankan Aplikasi
+
+Ketik perintah berikut di terminal:
+
+```bash
+streamlit run camera_app.py
 ```
 
-## 🎯 Features
+Browser akan otomatis terbuka menampilkan aplikasi.
 
-- **Auto extraction**: Ambil frames dengan interval cerdas
-- **Quality filters**:
-  - Blur detection (Laplacian variance)
-  - Brightness check (min/max threshold)
-  - Duplicate removal (histogram comparison)
-- **Batch upload**: Upload efficient ke Roboflow
-- **Progress tracking**: Real-time progress bar
+---
 
-## 📊 Output
+## 📂 Struktur Folder
 
-Frames akan tersimpan dengan format:
+- **`camera_app.py`**: Kode utama aplikasi (interface & logika).
+- **`mobilenetv3_final_finetuned.keras`**: Model AI yang sudah dilatih (Wajib ada).
+- **`requirements.txt`**: Daftar library Python yang dibutuhkan.
 
-```
-video1_frame_00000.jpg
-video1_frame_00001.jpg
-...
-video2_frame_00000.jpg
-...
-video3_frame_00000.jpg
-```
+## 🛠️ Fitur Utama
 
-## 💤 Automation
+1.  **Upload Video**: Mendukung format `.mp4` dan `.avi`.
+2.  **Klasifikasi Real-time**: Mendeteksi 3 status: _Idle_, _Bekerja_, _Meninggalkan Area_.
+3.  **Smart Validation**: Menggunakan _Motion Detection_ untuk memvalidasi aktivitas "Meninggalkan Area" agar lebih akurat.
+4.  **Laporan Statistik**: Di akhir video, ditampilkan grafik ringkasan aktivitas.
 
-Script berjalan full otomatis - tinggal tidur! 🌙
+---
 
-Proses bisa memakan waktu beberapa jam tergantung ukuran video.
-
-## 📝 License
-
-MIT
+**Happy Coding!** 🚀
