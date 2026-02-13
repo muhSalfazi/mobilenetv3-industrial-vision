@@ -1,0 +1,39 @@
+# ================
+# CACHE & TEMP
+# ================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.tmp
+*.pt
+*.pth
+*.h5
+*.ckpt
+*.mp4
+*.zip
+
+# ================
+# VSCODE
+# ================
+.vscode/
+.settings/
+
+# ================
+# DATA ARTIFACTS
+# ================
+data/output/
+dataset/dataset_classification/
+dataset/image/
+demo/
+# dataset/model/
+dataset/videos/
+venv/
+.venv/
+dataset/model/*
+!dataset/model/mobilenetv3_final_finetuned.keras
+dataset/video-mentah_TA.zip
+
+data/
+
