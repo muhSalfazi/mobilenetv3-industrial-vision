@@ -1,0 +1,12 @@
+{
+  "method": "gaussian",
+  "clahe": true,
+  "samples": 8,
+  "mse_mean": 457.18986892700195,
+  "mse_std": 61.61313519931827,
+  "psnr_mean": 21.572081122814414,
+  "psnr_std": 0.616151949518221,
+  "noise_std_before_mean": 7.270946353673935,
+  "noise_std_after_mean": 5.006895512342453,
+  "noise_reduction_percent_mean": 22.608811708439973
+}

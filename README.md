@@ -1,12 +1,10 @@
-# Activity Classifier AI 🏭
-
 Aplikasi Kecerdasan Buatan (AI) untuk mengidentifikasi aktivitas operator mesin pada rekaman CCTV menggunakan model Deep Learning **MobileNetV3**.
 
 Dikembangkan untuk Tugas Akhir oleh **Muhamad Salman Fauzi**.
 
 ---
 
-## 🚀 Cara Menjalankan Aplikasi
+## Cara Menjalankan Aplikasi
 
 Berikut adalah langkah-langkah singkat untuk menjalankan aplikasi ini di komputer Anda:
 
@@ -56,12 +54,6 @@ Browser akan otomatis terbuka menampilkan aplikasi.
 
 ---
 
-## 📂 Struktur Folder
-
-- **`camera_app.py`**: Kode utama aplikasi (interface & logika).
-- **`mobilenetv3_final_finetuned.keras`**: Model AI yang sudah dilatih (Wajib ada).
-- **`requirements.txt`**: Daftar library Python yang dibutuhkan.
-
 ## 🛠️ Fitur Utama
 
 1.  **Upload Video**: Mendukung format `.mp4` dan `.avi`.
@@ -71,4 +63,3 @@ Browser akan otomatis terbuka menampilkan aplikasi.
 
 ---
 
-**Happy Coding!** 🚀
