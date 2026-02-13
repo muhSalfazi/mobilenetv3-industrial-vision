@@ -6,6 +6,3 @@ altair>=4.2.0
 scipy>=1.7.0
 numpy>=1.21.0
 pillow>=8.3.0
-pytesseract>=0.3.13
-rapidocr-onnxruntime>=1.4.4
-onnxruntime>=1.24.1
