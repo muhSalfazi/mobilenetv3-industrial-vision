@@ -20,7 +20,9 @@ __pycache__/
 data/output/
 dataset/dataset_classification/
 dataset/image/
-dataset/model/
+# dataset/model/
 dataset/videos/
 venv/
 .venv/
+dataset/model/*
+!dataset/model/mobilenetv3_final_finetuned.keras
