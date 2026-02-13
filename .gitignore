@@ -26,3 +26,4 @@ venv/
 .venv/
 dataset/model/*
 !dataset/model/mobilenetv3_final_finetuned.keras
+dataset/video-mentah_TA.zip
