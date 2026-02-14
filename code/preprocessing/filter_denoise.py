@@ -59,10 +59,18 @@ def save_denoise_proof_charts(
 
     try:
         import matplotlib.pyplot as plt
+    except Exception as exc:
+        print(
+            "Peringatan: chart filter tidak dibuat karena matplotlib belum tersedia "
+            f"({exc.__class__.__name__})."
+        )
+        return {}
+    try:
         import seaborn as sns
         sns.set_theme(style="whitegrid")
     except Exception:
-        return {}
+        sns = None
+        print("Peringatan: seaborn belum tersedia, memakai fallback chart matplotlib untuk filter.")
 
     before_int = []
     after_int = []
@@ -117,7 +125,10 @@ def save_denoise_proof_charts(
 
     fig = plt.figure(figsize=(7, 4))
     ax = fig.add_subplot(1, 1, 1)
-    sns.histplot(before_int, bins=80, stat="density", color="#1f77b4", alpha=0.55, ax=ax)
+    if sns:
+        sns.histplot(before_int, bins=80, stat="density", color="#1f77b4", alpha=0.55, ax=ax)
+    else:
+        ax.hist(before_int, bins=80, density=True, color="#1f77b4", alpha=0.55)
     ax.set_title("Histogram Pixel Intensity (Before)")
     ax.set_xlabel("Pixel Intensity")
     ax.set_ylabel("Density")
@@ -128,7 +139,10 @@ def save_denoise_proof_charts(
 
     fig = plt.figure(figsize=(7, 4))
     ax = fig.add_subplot(1, 1, 1)
-    sns.histplot(after_int, bins=80, stat="density", color="#2ca02c", alpha=0.55, ax=ax)
+    if sns:
+        sns.histplot(after_int, bins=80, stat="density", color="#2ca02c", alpha=0.55, ax=ax)
+    else:
+        ax.hist(after_int, bins=80, density=True, color="#2ca02c", alpha=0.55)
     ax.set_title("Histogram Pixel Intensity (After)")
     ax.set_xlabel("Pixel Intensity")
     ax.set_ylabel("Density")
@@ -349,6 +363,8 @@ def main() -> None:
     )
     write_csv(args.output / "filter_manifest.csv", stats["rows"])
     print(f"Filter selesai. Total: {stats['total']}, Skipped: {stats['skipped']}, Time: {stats['seconds']}s")
+    if not args.preview:
+        print("Catatan: statistik visual filter dibuat saat menjalankan command dengan flag `--preview`.")
 
 
 if __name__ == "__main__":

@@ -111,7 +111,11 @@ def _save_augment_charts(
         return
     try:
         import matplotlib.pyplot as plt
-    except Exception:
+    except Exception as exc:
+        print(
+            "Peringatan: chart augment tidak dibuat karena matplotlib belum tersedia "
+            f"({exc.__class__.__name__})."
+        )
         return
 
     angles = np.array([float(r["angle_deg"]) for r in rows], dtype=np.float32)
@@ -248,7 +252,11 @@ def _save_split_mean_heatmaps(
         return
     try:
         import matplotlib.pyplot as plt
-    except Exception:
+    except Exception as exc:
+        print(
+            "Peringatan: heatmap augment tidak dibuat karena matplotlib belum tersedia "
+            f"({exc.__class__.__name__})."
+        )
         return
 
     before_imgs = []
@@ -463,6 +471,8 @@ def main() -> None:
         f"Total: {stats['total']}, Skipped: {stats['skipped']}, "
         f"Time: {stats['seconds']}s, Stats: {stats['stats_dir']}"
     )
+    if not args.preview:
+        print("Catatan: preview tambahan augment dibuat saat menjalankan command dengan flag `--preview`.")
 
 
 if __name__ == "__main__":

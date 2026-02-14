@@ -18,8 +18,8 @@ venv\Scripts\activate
 **Linux:**
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 ```
 
 > **Tips:** Untuk keluar dari virtual environment, cukup ketik perintah `deactivate`.

@@ -38,6 +38,8 @@ def main() -> None:
     parser.add_argument("--demo-rank", type=int, default=1)
     parser.add_argument("--demo-image", type=str, default=None)
     args = parser.parse_args()
+    if not args.preview:
+        print("Catatan: statistik visual per tahap hanya dibuat saat menjalankan pipeline dengan flag `--preview`.")
 
     if not args.skip_resize:
         resize_stats = resize_images(
@@ -68,8 +70,9 @@ def main() -> None:
         print(f"Filter selesai: {filter_stats['total']} images")
 
     if not args.skip_normalize:
+        normalize_input_dir = args.filtered_dir if not args.skip_filter else args.resize_dir
         norm_stats = normalize_images(
-            args.resize_dir,
+            normalize_input_dir,
             args.normalized_dir,
             args.norm_mode,
             args.save_norm_image,

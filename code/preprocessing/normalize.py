@@ -52,10 +52,18 @@ def save_academic_normalization_charts(
         return
     try:
         import matplotlib.pyplot as plt
+    except Exception as exc:
+        print(
+            "Peringatan: chart normalisasi tidak dibuat karena matplotlib belum tersedia "
+            f"({exc.__class__.__name__})."
+        )
+        return
+    try:
         import seaborn as sns
         sns.set_theme(style="whitegrid")
     except Exception:
-        return
+        sns = None
+        print("Peringatan: seaborn belum tersedia, memakai fallback chart matplotlib untuk normalisasi.")
 
     before_intensity_pixels = []
     after_intensity_pixels = []
@@ -114,7 +122,10 @@ def save_academic_normalization_charts(
 
     fig = plt.figure(figsize=(6.8, 4))
     ax = fig.add_subplot(1, 1, 1)
-    sns.histplot(before_intensity_pixels, bins=80, stat="density", color="#1f77b4", alpha=0.55, ax=ax)
+    if sns:
+        sns.histplot(before_intensity_pixels, bins=80, stat="density", color="#1f77b4", alpha=0.55, ax=ax)
+    else:
+        ax.hist(before_intensity_pixels, bins=80, density=True, color="#1f77b4", alpha=0.55)
     ax.set_title(f"{title_prefix} - Histogram Intensitas (Before)")
     ax.set_xlabel("Pixel Intensity")
     ax.set_ylabel("Density")
@@ -124,7 +135,10 @@ def save_academic_normalization_charts(
 
     fig = plt.figure(figsize=(6.8, 4))
     ax = fig.add_subplot(1, 1, 1)
-    sns.histplot(after_intensity_pixels, bins=80, stat="density", color="#2ca02c", alpha=0.55, ax=ax)
+    if sns:
+        sns.histplot(after_intensity_pixels, bins=80, stat="density", color="#2ca02c", alpha=0.55, ax=ax)
+    else:
+        ax.hist(after_intensity_pixels, bins=80, density=True, color="#2ca02c", alpha=0.55)
     ax.set_title(f"{title_prefix} - Histogram Intensitas (After)")
     ax.set_xlabel("Pixel Intensity")
     ax.set_ylabel("Density")
@@ -334,6 +348,8 @@ def main() -> None:
     )
     write_csv(args.output / "normalize_manifest.csv", stats["rows"])
     print(f"Normalisasi selesai. Total: {stats['total']}, Skipped: {stats['skipped']}, Time: {stats['seconds']}s")
+    if not args.preview:
+        print("Catatan: statistik visual normalisasi dibuat saat menjalankan command dengan flag `--preview`.")
 
 
 if __name__ == "__main__":
