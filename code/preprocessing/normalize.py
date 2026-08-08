@@ -34,11 +34,18 @@ def compute_mean_std(image_paths: list[Path]) -> tuple[np.ndarray, np.ndarray]:
 
 
 def to_unit_range(normalized: np.ndarray, mode: str) -> np.ndarray:
+    """Convert normalized array to [0, 1] range for visualization.
+    
+    MobileNetV3 preprocess_input typically outputs values in range ~[-2, 2]
+    based on ImageNet normalization (mean subtraction and std division).
+    """
     if mode == "minmax":
         unit = np.clip(normalized, 0.0, 1.0)
     elif mode == "mobilenetv3":
-        unit = np.clip((normalized + 1.0) / 2.0, 0.0, 1.0)
+        # MobileNetV3: map approximate range [-2, 2] to [0, 1]
+        unit = np.clip((normalized + 2.0) / 4.0, 0.0, 1.0)
     else:
+        # zscore: map approximate range [-3, 3] to [0, 1]
         unit = np.clip((normalized + 3.0) / 6.0, 0.0, 1.0)
     return unit
 

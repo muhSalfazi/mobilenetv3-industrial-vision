@@ -12,7 +12,7 @@ Supaya library tidak bentrok dengan sistem lain, sebaiknya gunakan virtual envir
 
 ```bash
 python -m venv venv
-venv\Scripts\activate
+j
 ```
 
 **Linux:**

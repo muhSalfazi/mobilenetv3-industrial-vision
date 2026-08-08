@@ -1,32 +1,64 @@
-# ================
-# CACHE & TEMP
-# ================
+# ==========================================
+# PYTHON & VIRTUAL ENVIRONMENTS
+# ==========================================
+.venv/
+venv/
+env/
+ENV/
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.ipynb_checkpoints/
 *.log
 *.tmp
 
-# ================
-# VSCODE
-# ================
+# ==========================================
+# IDE & SYSTEM FILES
+# ==========================================
 .vscode/
-.settings/
+.idea/
+.DS_Store
 
-# ================
-# DATA ARTIFACTS
-# ================
-data/output/*
-!data/output/.gitkeep
+# ==========================================
+# DATA & DATASET FOLDERS
+# ==========================================
 data/input/*
 !data/input/.gitkeep
+data/output/*
+!data/output/.gitkeep
+
+dataset/datasetCOCO/
 dataset/dataset_classification/
 dataset/image/
-# dataset/model/
 dataset/videos/
-venv/
-.venv/
+dataset/*.zip
+dataset/*.tar.gz
+
+# ==========================================
+# MODELS & WEIGHTS FOLDERS
+# ==========================================
 dataset/model/*
-!dataset/model/mobilenetv3_final_finetuned.keras
-dataset/video-mentah_TA.zip
+!dataset/model/.gitkeep
+*.keras
+*.h5
+*.pth
+*.pt
+*.onnx
+*.tflite
+*.ckpt
+*.pb
+*.weights
+
+# ==========================================
+# DEMO & MEDIA FILES
+# ==========================================
+demo/*.mp4
+demo/*.avi
+demo/*.mov
+demo/*.mkv
+demo/bukan-area/
+*.mp4
+*.avi
+*.mov
+*.mkv
